@@ -3,14 +3,14 @@ package Classes;
 public class Produto {
 
     private String nome;
-    private Float preco;
+    private Float valorUnitario;
 
     public Produto() {
     }
 
-    public Produto(String nome, Float preco) {
+    public Produto(String nome, Float valorUnitario) {
         this.nome = nome;
-        this.preco = preco;
+        this.valorUnitario = valorUnitario;
     }
 
     public String getNome() {
@@ -21,11 +21,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Float getPreco() {
-        return preco;
+    public Float getValorUnitario() {
+        return valorUnitario;
     }
 
-    public void setPreco(Float preco) {
-        this.preco = preco;
+    public void setValorUnitario(Float valorUnitario) {
+        this.valorUnitario = valorUnitario;
     }
 }
