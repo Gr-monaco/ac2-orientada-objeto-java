@@ -13,11 +13,12 @@ public class App {
             System.out.flush();
 
             System.out.printf("%1s Menu %2s%n", "#".repeat(5), "#".repeat(5));
-            System.out.printf("[1] - Cadastra fornecedor\n" +
-                    "[10] - Sai do Programa\n" +
-                    "Opcao: ");
+            System.out.print("""
+                    [1] - Cadastra fornecedor
+                    [10] - Sai do Programa
+                    Opcao:\s""");
 
-            String escolha = scanner.nextLine().replaceAll("\\[", "").replaceAll("\\]", "");
+            String escolha = scanner.nextLine().replaceAll("\\[", "").replaceAll("]", "");
             switch (escolha) {
                 case "s" -> exit = Boolean.TRUE;
                 case "f" -> System.out.println("Fornecedor");
