@@ -4,13 +4,15 @@ public class Produto {
 
     private String nome;
     private Float valorUnitario;
+    private String descricao;
 
     public Produto() {
     }
 
-    public Produto(String nome, Float valorUnitario) {
+    public Produto(String nome, Float valorUnitario, String descricao) {
         this.nome = nome;
         this.valorUnitario = valorUnitario;
+        this.descricao = descricao;
     }
 
     public String getNome() {
@@ -27,5 +29,13 @@ public class Produto {
 
     public void setValorUnitario(Float valorUnitario) {
         this.valorUnitario = valorUnitario;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
