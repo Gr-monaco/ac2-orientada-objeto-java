@@ -21,5 +21,7 @@ public class FornecedorService {
         for (Fornecedor fornecedor : listaDeFornecedores) {
             System.out.println("[Nome: "+fornecedor.getNome()+" CNPJ: "+fornecedor.getCNPJ()+"]");
         }
+        
+        scanner.nextLine();
     }
 }
