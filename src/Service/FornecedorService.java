@@ -6,10 +6,12 @@ import java.util.Scanner;
 
 public class FornecedorService {
 
-    public Fornecedor criaFornecedor(){
+    public Fornecedor criaFornecedor(Scanner scanner) {        
+        System.out.println("Insira um nome:");
+        String nome = scanner.nextLine();
         System.out.println("Insira  CPNJ:");
-        Scanner scanner = new Scanner(System.in);
         String CNPJ = scanner.nextLine();
-        return new Fornecedor();
+
+        return new Fornecedor(nome, CNPJ);
     }
 }
