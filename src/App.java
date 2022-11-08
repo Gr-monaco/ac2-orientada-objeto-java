@@ -21,6 +21,7 @@ public class App {
             System.out.printf("%1s Menu %2s%n", "#".repeat(5), "#".repeat(5));
             System.out.print("""
                     [1] - Cadastra fornecedor
+                    [L1] - Lista fornecedores
                     [10] - Sai do Programa
                     Opcao:\s""");
 
@@ -28,7 +29,11 @@ public class App {
             switch (escolha) {
                 case "s" -> exit = Boolean.TRUE;
                 case "1" -> {
+                    //Talvez criar uma função no service que faz a adição
                     bancoDeDadosDeFornecedores.add(fornecedorService.criaFornecedor(scanner));
+                }
+                case "L1" -> {
+                    fornecedorService.listaFornecedores(scanner, bancoDeDadosDeFornecedores);
                 }
                 case "f" -> System.out.println("Fornecedor");
                 default -> {
