@@ -9,6 +9,8 @@ import Service.FornecedorService;
 public class App {
     public static void main(String[] args) throws Exception {
         ArrayList<Fornecedor> bancoDeDadosDeFornecedores = new ArrayList<>();
+        bancoDeDadosDeFornecedores.add(new Fornecedor("Pilhas Azul", "28.530.660/0001-01"));
+        bancoDeDadosDeFornecedores.add(new Fornecedor("Engrenagens engenharia", "19.171.253/0001-56" ));
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         boolean exit = Boolean.FALSE;
         FornecedorService fornecedorService = new FornecedorService();
