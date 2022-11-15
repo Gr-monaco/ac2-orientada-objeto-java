@@ -3,18 +3,23 @@ import java.util.Scanner;
 
 import Classes.Cliente;
 import Classes.Fornecedor;
+import Classes.Produto;
 import Service.ClienteService;
 import Service.FornecedorService;
+import Service.ProdutoService;
 
 public class App {
     public static void main(String[] args) throws Exception {
         ArrayList<Fornecedor> bancoDeDadosDeFornecedores = new ArrayList<>();
         bancoDeDadosDeFornecedores.add(new Fornecedor("Pilhas Azul", "28.530.660/0001-01"));
         bancoDeDadosDeFornecedores.add(new Fornecedor("Engrenagens engenharia", "19.171.253/0001-56" ));
+
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
+        ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
         boolean exit = Boolean.FALSE;
         FornecedorService fornecedorService = new FornecedorService();
         ClienteService clienteService = new ClienteService();
+        ProdutoService produtoService = new ProdutoService();
         Scanner scanner = new Scanner(System.in);
         while (!exit){
 
@@ -28,6 +33,7 @@ public class App {
             System.out.print("""
                     [1] - Cadastra fornecedor
                     [2] - Cadastro de cliente
+                    [3] - Cadastro de produto
                     [L1] - Lista fornecedores
                     [L2] - Lista clientes
                     [10] - Sai do Programa
@@ -42,6 +48,9 @@ public class App {
                 }
                 case "2" -> {
                     bancoDeDadosDeClientes.add(clienteService.escolherTipoDeCliente(scanner));
+                }
+                case "3" -> {
+                    bancoDeDadosDeProdutos.add(produtoService.cadastrarProduto(scanner, bancoDeDadosDeFornecedores));
                 }
                 case "L1" -> {
                     fornecedorService.listaFornecedores(scanner, bancoDeDadosDeFornecedores);
