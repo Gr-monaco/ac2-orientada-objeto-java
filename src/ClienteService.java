@@ -34,9 +34,9 @@ public class ClienteService {
         [2]  - Juridica
         """);
     String escolha = scanner.nextLine().replaceAll("\\[", "").replaceAll("]", "");  
-    if(escolha=="1"){
+    if(escolha.equals("1")){
       return this.criaClientePessoaFisica(scanner);
-    } else if (escolha=="2"){
+    } else if (escolha.equals("2")){
       return this.criaClientePessoaJuridica(scanner);
     }else{ //Isso vai fazer o menu aparecer de novo caso não escolha uma
            //opção valida, não é mto elegante mas deve funcionar
