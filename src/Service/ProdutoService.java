@@ -19,7 +19,7 @@ public class ProdutoService {
     System.out.println("Escolha um fornecedor:");
 
     for(int i = 0; i < listaDeFornecedores.size(); i++){
-      System.out.println("["+(i+1)+"] - " + listaDeFornecedores.get(i).toString());
+      System.out.println("["+(i+1)+"] - " + listaDeFornecedores.get(i).getNome());
     }
 
     System.out.println("Escolha um numero: ");
@@ -27,7 +27,7 @@ public class ProdutoService {
     //TODO: try catch
     int escolha = Integer.parseInt(scanner.nextLine());
 
-    Fornecedor fornecedorEscolhido = listaDeFornecedores.get(escolha);
+    Fornecedor fornecedorEscolhido = listaDeFornecedores.get(escolha-1);
 
     return new Produto(nome, valorUnitario, descricao, fornecedorEscolhido);
   }
