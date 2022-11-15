@@ -27,4 +27,9 @@ public class PessoaJuridica extends Cliente{
         setCNPJ(CNPJ);
         scanner.close();
     }
+
+    @Override
+    public String toString() {
+        return "[nome: " + this.getNome() + " email: " + this.getEmail() + " CNPJ: " + this.getCNPJ() + "]"; 
+    }
 }
