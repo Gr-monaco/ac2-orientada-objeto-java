@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import Classes.Cliente;
 import Classes.Fornecedor;
+import Service.ClienteService;
 import Service.FornecedorService;
 
 public class App {
