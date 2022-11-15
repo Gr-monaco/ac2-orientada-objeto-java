@@ -1,3 +1,5 @@
+package Service;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Classes.Cliente;
@@ -42,5 +44,14 @@ public class ClienteService {
            //opção valida, não é mto elegante mas deve funcionar
       return this.escolherTipoDeCliente(scanner);
     }
+  }
+
+  public void listarClientes(Scanner scanner, ArrayList<Cliente> listaDeClientes){
+    System.out.println("Clientes: ");
+    for(Cliente cliente : listaDeClientes){
+      System.out.println(cliente.toString());
+    }
+    
+    scanner.nextLine();
   }
 }
