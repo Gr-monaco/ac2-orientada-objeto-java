@@ -1,14 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Classes.Cliente;
 import Classes.Fornecedor;
 import Service.FornecedorService;
 
 public class App {
     public static void main(String[] args) throws Exception {
         ArrayList<Fornecedor> bancoDeDadosDeFornecedores = new ArrayList<>();
+        ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         boolean exit = Boolean.FALSE;
         FornecedorService fornecedorService = new FornecedorService();
+        ClienteService clienteService = new ClienteService();
         Scanner scanner = new Scanner(System.in);
         while (!exit){
 
@@ -21,6 +24,7 @@ public class App {
             System.out.printf("%1s Menu %2s%n", "#".repeat(5), "#".repeat(5));
             System.out.print("""
                     [1] - Cadastra fornecedor
+                    [2] - Cadastro de cliente
                     [L1] - Lista fornecedores
                     [10] - Sai do Programa
                     Opcao:\s""");
@@ -31,6 +35,9 @@ public class App {
                 case "1" -> {
                     //Talvez criar uma função no service que faz a adição
                     bancoDeDadosDeFornecedores.add(fornecedorService.criaFornecedor(scanner));
+                }
+                case "2" -> {
+                    bancoDeDadosDeClientes.add(clienteService.escolherTipoDeCliente(scanner));
                 }
                 case "L1" -> {
                     fornecedorService.listaFornecedores(scanner, bancoDeDadosDeFornecedores);
