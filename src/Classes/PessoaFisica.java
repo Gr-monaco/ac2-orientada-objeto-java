@@ -30,6 +30,6 @@ public class PessoaFisica extends Cliente{
 
   @Override
   public String toString() {
-    return "[Nome: "+ this.getNome() + " email: " + this.getEmail() + "CPF: " + this.getCPF() +"]";
+    return "[Nome: "+ this.getNome() + " email: " + this.getEmail() + " CPF: " + this.getCPF() +"]";
   }
 }
