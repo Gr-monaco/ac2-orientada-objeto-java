@@ -27,4 +27,9 @@ public class PessoaFisica extends Cliente{
     setCPF(CPF);
     scanner.close();
   }
+
+  @Override
+  public String toString() {
+    return "[Nome: "+ this.getNome() + " email: " + this.getEmail() + " CPF: " + this.getCPF() +"]";
+  }
 }

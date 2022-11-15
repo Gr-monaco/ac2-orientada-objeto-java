@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import Classes.Cliente;
 import Classes.Fornecedor;
+import Service.ClienteService;
 import Service.FornecedorService;
 
 public class App {
@@ -26,6 +27,7 @@ public class App {
                     [1] - Cadastra fornecedor
                     [2] - Cadastro de cliente
                     [L1] - Lista fornecedores
+                    [L2] - Lista clientes
                     [10] - Sai do Programa
                     Opcao:\s""");
 
@@ -41,6 +43,9 @@ public class App {
                 }
                 case "L1" -> {
                     fornecedorService.listaFornecedores(scanner, bancoDeDadosDeFornecedores);
+                }
+                case "L2" -> {
+                    clienteService.listarClientes(scanner, bancoDeDadosDeClientes);
                 }
                 case "f" -> System.out.println("Fornecedor");
                 default -> {
