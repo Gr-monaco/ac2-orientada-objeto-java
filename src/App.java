@@ -36,6 +36,7 @@ public class App {
                     [3] - Cadastro de produto
                     [L1] - Lista fornecedores
                     [L2] - Lista clientes
+                    [L3] - Lista produtos
                     [10] - Sai do Programa
                     Opcao:\s""");
 
@@ -57,6 +58,9 @@ public class App {
                 }
                 case "L2" -> {
                     clienteService.listarClientes(scanner, bancoDeDadosDeClientes);
+                }
+                case "L3" -> {
+                    ProdutoService.listarProdutos(scanner, bancoDeDadosDeProdutos);
                 }
                 case "f" -> System.out.println("Fornecedor");
                 default -> {
