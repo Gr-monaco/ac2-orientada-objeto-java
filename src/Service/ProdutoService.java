@@ -31,4 +31,13 @@ public class ProdutoService {
 
     return new Produto(nome, valorUnitario, descricao, fornecedorEscolhido);
   }
+
+  public void listarProdutos(Scanner scanner, ArrayList<Produto> listaDeProdutos){
+    System.out.println("Produtos: ");
+    for (Produto produto : listaDeProdutos) {
+      System.out.println(produto.toString());
+    }
+
+    scanner.nextLine();
+  }
 }
