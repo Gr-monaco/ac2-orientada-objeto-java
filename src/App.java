@@ -34,6 +34,7 @@ public class App {
                     [1] - Cadastra fornecedor
                     [2] - Cadastro de cliente
                     [3] - Cadastro de produto
+                    [4] - Realizar pedido
                     [L1] - Lista fornecedores
                     [L2] - Lista clientes
                     [10] - Sai do Programa
@@ -50,6 +51,9 @@ public class App {
                     bancoDeDadosDeClientes.add(clienteService.escolherTipoDeCliente(scanner));
                 }
                 case "3" -> {
+                    bancoDeDadosDeProdutos.add(produtoService.cadastrarProduto(scanner, bancoDeDadosDeFornecedores));
+                }
+                case "4" -> {
                     bancoDeDadosDeProdutos.add(produtoService.cadastrarProduto(scanner, bancoDeDadosDeFornecedores));
                 }
                 case "L1" -> {
