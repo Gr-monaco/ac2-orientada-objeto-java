@@ -40,4 +40,11 @@ public class ProdutoService {
 
     scanner.nextLine();
   }
+
+  public Produto buscarProdutoPorNome(Scanner scanner, ArrayList<Produto> listaDeProdutos, String nome){
+    return listaDeProdutos.stream()
+            .filter(produto -> nome.equals(produto.getNome()))
+            .findFirst()
+            .orElse(null);
+  }
 }
