@@ -27,4 +27,9 @@ public class Fornecedor {
     public void setCNPJ(String CNPJ) {
         this.CNPJ = CNPJ;
     }
+
+    @Override
+    public String toString() {
+    return "[nome:"+nome +" cnpj: "+CNPJ+" ]";
+    }
 }

@@ -16,6 +16,9 @@ public class App {
 
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
+        bancoDeDadosDeProdutos.add(new Produto("Pilha Power",50f,"Pilhas super", bancoDeDadosDeFornecedores.get(0)));
+        bancoDeDadosDeProdutos.add(new Produto("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1)));
+
         boolean exit = Boolean.FALSE;
         FornecedorService fornecedorService = new FornecedorService();
         ClienteService clienteService = new ClienteService();
@@ -37,6 +40,7 @@ public class App {
                     [L1] - Lista fornecedores
                     [L2] - Lista clientes
                     [L3] - Lista produtos
+                    [PN] - Produto por nome
                     [10] - Sai do Programa
                     Opcao:\s""");
 
@@ -61,6 +65,9 @@ public class App {
                 }
                 case "L3" -> {
                     produtoService.listarProdutos(scanner, bancoDeDadosDeProdutos);
+                }
+                case "PN" -> {
+                    produtoService.buscarProdutoPorNome(scanner, bancoDeDadosDeProdutos);
                 }
                 case "f" -> System.out.println("Fornecedor");
                 default -> {

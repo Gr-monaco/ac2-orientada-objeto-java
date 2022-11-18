@@ -53,6 +53,6 @@ public class Produto {
     @Override
     public String toString() {
         return "Produto [nome=" + nome + ", valorUnitario=" + valorUnitario + ", descricao=" + descricao
-                + ", fornecedor=" + fornecedor + "]";
+                + ", fornecedor=" + fornecedor.toString() + "]";
     }
 }
