@@ -19,6 +19,9 @@ public class App {
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
         Pedido pedido = new Pedido();
+        bancoDeDadosDeProdutos.add(new Produto("Pilha Power",50f,"Pilhas super", bancoDeDadosDeFornecedores.get(0)));
+        bancoDeDadosDeProdutos.add(new Produto("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1)));
+
         boolean exit = Boolean.FALSE;
         FornecedorService fornecedorService = new FornecedorService();
         ClienteService clienteService = new ClienteService();
