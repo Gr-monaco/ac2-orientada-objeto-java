@@ -1,6 +1,7 @@
 package Service;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import Classes.Fornecedor;
@@ -30,5 +31,33 @@ public class ProdutoService {
     Fornecedor fornecedorEscolhido = listaDeFornecedores.get(escolha-1);
 
     return new Produto(nome,valorUnitario,0, descricao, fornecedorEscolhido);
+  }
+
+  public void listarProdutos(Scanner scanner, ArrayList<Produto> listaDeProdutos){
+    System.out.println("Produtos: ");
+    for (Produto produto : listaDeProdutos) {
+      System.out.println(produto.toString());
+    }
+
+    scanner.nextLine();
+  }
+
+  public Produto buscarProdutoPorNome(Scanner scanner, ArrayList<Produto> listaDeProdutos){
+    System.out.println("Digite um nome: ");
+    String nomeDoProduto  = scanner.nextLine();
+
+    Produto produtoAchado = listaDeProdutos.stream()
+    .filter(produto -> nomeDoProduto.equalsIgnoreCase(produto.getNome()))
+    .findFirst()
+    .orElse(null);
+
+    if(Objects.nonNull(produtoAchado)){
+      System.out.println(produtoAchado.toString());
+    }else {
+      System.out.println("Produto não encontrado");
+    }
+    
+    scanner.nextLine();
+    return produtoAchado;
   }
 }
