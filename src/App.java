@@ -64,7 +64,7 @@ public class App {
                     clienteService.listarClientes(scanner, bancoDeDadosDeClientes);
                 }
                 case "L3" -> {
-                    ProdutoService.listarProdutos(scanner, bancoDeDadosDeProdutos);
+                    produtoService.listarProdutos(scanner, bancoDeDadosDeProdutos);
                 }
                 case "PN" -> {
                     produtoService.buscarProdutoPorNome(scanner, bancoDeDadosDeProdutos);
