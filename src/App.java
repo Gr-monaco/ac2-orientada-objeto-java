@@ -3,9 +3,11 @@ import java.util.Scanner;
 
 import Classes.Cliente;
 import Classes.Fornecedor;
+import Classes.Pedido;
 import Classes.Produto;
 import Service.ClienteService;
 import Service.FornecedorService;
+import Service.PedidoService;
 import Service.ProdutoService;
 
 public class App {
@@ -16,10 +18,12 @@ public class App {
 
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
+        Pedido pedido = new Pedido();
         boolean exit = Boolean.FALSE;
         FornecedorService fornecedorService = new FornecedorService();
         ClienteService clienteService = new ClienteService();
         ProdutoService produtoService = new ProdutoService();
+        PedidoService pedidoService = new PedidoService();
         Scanner scanner = new Scanner(System.in);
         while (!exit){
 
@@ -54,7 +58,7 @@ public class App {
                     bancoDeDadosDeProdutos.add(produtoService.cadastrarProduto(scanner, bancoDeDadosDeFornecedores));
                 }
                 case "4" -> {
-                    bancoDeDadosDeProdutos.add(produtoService.cadastrarProduto(scanner, bancoDeDadosDeFornecedores));
+                    pedido = pedidoService.criaPedido(scanner, bancoDeDadosDeProdutos);
                 }
                 case "L1" -> {
                     fornecedorService.listaFornecedores(scanner, bancoDeDadosDeFornecedores);

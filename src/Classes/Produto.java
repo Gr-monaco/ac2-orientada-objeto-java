@@ -36,11 +36,11 @@ public class Produto {
         this.valorUnitario = valorUnitario;
     }
 
-    public Long getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Long quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 

@@ -1,12 +1,12 @@
 package Classes;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Pedido {
     private String cpf;
     private String nomeDoCliente;
-    private Long id;
     private Date data;
     private Double valorTotal;
 
@@ -15,13 +15,16 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(String cpf, String nomeDoCliente, Long id, Date data, Double valorTotal, List<Produto> produtos) {
+    public Pedido(String cpf, String nomeDoCliente, ArrayList<Produto> produtos) {
         this.cpf = cpf;
         this.nomeDoCliente = nomeDoCliente;
-        this.id = id;
-        this.data = data;
-        this.valorTotal = valorTotal;
+        this.data = new Date();
         this.produtos = produtos;
+        double somador = 0;
+        for(Produto produto: produtos) {
+            somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
+        }
+        this.valorTotal = somador;
     }
 
     public String getCpf() {
@@ -38,14 +41,6 @@ public class Pedido {
 
     public void setNomeDoCliente(String nomeDoCliente) {
         this.nomeDoCliente = nomeDoCliente;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Date getData() {
@@ -73,7 +68,6 @@ public class Pedido {
         return "Pedido{" +
                 "cpf='" + cpf + '\'' +
                 ", nomeDoCliente='" + nomeDoCliente + '\'' +
-                ", id=" + id +
                 ", data=" + data +
                 ", valorTotal=" + valorTotal +
                 '}';
