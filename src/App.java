@@ -15,10 +15,9 @@ public class App {
         ArrayList<Fornecedor> bancoDeDadosDeFornecedores = new ArrayList<>();
         bancoDeDadosDeFornecedores.add(new Fornecedor("Pilhas Azul", "28.530.660/0001-01"));
         bancoDeDadosDeFornecedores.add(new Fornecedor("Engrenagens engenharia", "19.171.253/0001-56" ));
-
+        ArrayList<Pedido> bancoDeDadosDePedidos = new ArrayList<>();
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
-        Pedido pedido = new Pedido();
         bancoDeDadosDeProdutos.add(new Produto("Pilha Power",50f, "Pilhas super", bancoDeDadosDeFornecedores.get(0)));
         bancoDeDadosDeProdutos.add(new Produto("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1)));
 
@@ -68,7 +67,7 @@ public class App {
                     break;
                 }
                 case "4" : {
-                    pedido = pedidoService.criaPedido(scanner, bancoDeDadosDeProdutos);
+                    bancoDeDadosDePedidos.add(pedidoService.criaPedido(scanner, bancoDeDadosDeProdutos));
                     break;
                 }
                 case "L1" : {
