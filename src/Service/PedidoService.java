@@ -12,28 +12,32 @@ public class PedidoService {
     System.out.println("Insira um nome do cliente:");
     String nome = scanner.nextLine();
 
-    ArrayList<Produto> produtosDoPedido = new ArrayList<>();
+    ArrayList<ProdutoQuantidade> produtosDoPedido = new ArrayList<>();
 
-    System.out.println("Escolha um produto:");
-    for(int i = 0; i < produtos.size(); i++){
-      System.out.println("["+(i+1)+"] - " + produtos.get(i).getNome());
-    }
+
     int continuar = 1;
     while(continuar == 1) {
+      System.out.println("Escolha um produto:");
+      for(int i = 0; i < produtos.size(); i++){
+        System.out.println("["+(i+1)+"] - " + produtos.get(i).getNome());
+      }
       System.out.println("Escolha um numero: ");
       int escolha = Integer.parseInt(scanner.nextLine());
       System.out.println("Escolha a quantidade: ");
-      int quantidade = scanner.nextInt();
+      int quantidade = Integer.parseInt(scanner.nextLine());
 
       Produto novoProduto = produtos.get(escolha-1);
+      ProdutoQuantidade novoProdutoPedido = new ProdutoQuantidade(novoProduto.getNome(),novoProduto.getValorUnitario(),
+                                                        novoProduto.getDescricao(), novoProduto.getFornecedor(),
+                                                        quantidade);
       //novoProduto.setQuantidade(quantidade);
 
-      produtosDoPedido.add(novoProduto);
+      produtosDoPedido.add(novoProdutoPedido);
 
       System.out.println("Deseja adicionar mais produtos?");
       System.out.println("1 - sim");
       System.out.println("2 - nao");
-      continuar = scanner.nextInt();
+      continuar = Integer.parseInt(scanner.nextLine());
     }
 
     return new Pedido(cpf, nome, produtosDoPedido);
