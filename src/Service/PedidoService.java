@@ -26,7 +26,7 @@ public class PedidoService {
       int quantidade = scanner.nextInt();
 
       Produto novoProduto = produtos.get(escolha-1);
-      novoProduto.setQuantidade(quantidade);
+      //novoProduto.setQuantidade(quantidade);
 
       produtosDoPedido.add(novoProduto);
 
