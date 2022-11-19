@@ -10,18 +10,18 @@ public class Pedido {
     private Date data;
     private Double valorTotal;
 
-    private List<Produto> produtos;
+    private List<ProdutoQuantidade> produtos;
 
     public Pedido() {
     }
 
-    public Pedido(String cpf, String nomeDoCliente, ArrayList<Produto> produtos) {
+    public Pedido(String cpf, String nomeDoCliente, ArrayList<ProdutoQuantidade> produtos) {
         this.cpf = cpf;
         this.nomeDoCliente = nomeDoCliente;
         this.data = new Date();
         this.produtos = produtos;
         double somador = 0;
-        for(Produto produto: produtos) {
+        for(ProdutoQuantidade produto: produtos) {
             somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
         }
         this.valorTotal = somador;
@@ -59,7 +59,7 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
 
-    public void addProduto(Produto novoProduto) {
+    public void addProduto(ProdutoQuantidade novoProduto) {
         this.produtos.add(novoProduto);
     }
 
