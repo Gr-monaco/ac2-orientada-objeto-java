@@ -15,7 +15,7 @@ public class ProdutoService {
     String descricao = scanner.nextLine();
     System.out.println("Valor unitario:");
     //TODO: try catch
-    Float valorUnitario = Float.parseFloat(scanner.nextLine()); // vai dar expection se não for float
+    Float valorUnitario = Float.parseFloat(scanner.nextLinelistagem()); // vai dar expection se não for float
     
     System.out.println("Escolha um fornecedor:");
 
