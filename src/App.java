@@ -45,6 +45,7 @@ public class App {
                     "[L1] - Lista fornecedores\n" +
                     "[L2] - Lista clientes\n" +
                     "[L3] - Lista produtos\n" +
+                    "[L4] - Lista pedidos\n" +
                     "[10] - Sai do Programa\n" +
                     "Opcao:\n");
 
@@ -86,6 +87,9 @@ public class App {
                 case "L3" : {
                     produtoService.listarProdutos(scanner, bancoDeDadosDeProdutos);
                     break;
+                }
+                case "L4" : {
+                    pedidoService.listarPedidos(scanner, bancoDeDadosDePedidos);
                 }
                 case "f" : {
                     System.out.println("Fornecedor");
