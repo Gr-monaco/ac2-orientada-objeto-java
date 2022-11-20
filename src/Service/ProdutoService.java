@@ -30,7 +30,7 @@ public class ProdutoService {
 
     Fornecedor fornecedorEscolhido = listaDeFornecedores.get(escolha-1);
 
-    return new Produto(nome, valorUnitario, descricao, fornecedorEscolhido);
+    return new Produto(nome,valorUnitario,0, descricao, fornecedorEscolhido);
   }
 
   public void listarProdutos(Scanner scanner, ArrayList<Produto> listaDeProdutos){

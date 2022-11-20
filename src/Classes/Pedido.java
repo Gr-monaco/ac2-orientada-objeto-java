@@ -8,7 +8,7 @@ public class Pedido {
     private String cpf;
     private String nomeDoCliente;
     private Date data;
-    private double valorTotal;
+    private Double valorTotal;
 
     private List<Produto> produtos;
 
@@ -21,7 +21,7 @@ public class Pedido {
         this.data = new Date();
         this.produtos = produtos;
         double somador = 0;
-        for(Produto produto: produtos) {
+        for (Produto produto : produtos) {
             somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
         }
         this.valorTotal = somador;

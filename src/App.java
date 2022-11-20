@@ -3,9 +3,11 @@ import java.util.Scanner;
 
 import Classes.Cliente;
 import Classes.Fornecedor;
+import Classes.Pedido;
 import Classes.Produto;
 import Service.ClienteService;
 import Service.FornecedorService;
+import Service.PedidoService;
 import Service.ProdutoService;
 
 public class App {
@@ -16,6 +18,7 @@ public class App {
 
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
+        Pedido pedido = new Pedido();
         bancoDeDadosDeProdutos.add(new Produto("Pilha Power",50f,"Pilhas super", bancoDeDadosDeFornecedores.get(0)));
         bancoDeDadosDeProdutos.add(new Produto("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1)));
 
@@ -23,6 +26,7 @@ public class App {
         FornecedorService fornecedorService = new FornecedorService();
         ClienteService clienteService = new ClienteService();
         ProdutoService produtoService = new ProdutoService();
+        PedidoService pedidoService = new PedidoService();
         Scanner scanner = new Scanner(System.in);
         while (!exit){
 
@@ -33,44 +37,52 @@ public class App {
             System.out.flush();
 
             System.out.printf("%1s Menu %2s%n", "#".repeat(5), "#".repeat(5));
-            System.out.print("""
-                    [1] - Cadastra fornecedor
-                    [2] - Cadastro de cliente
-                    [3] - Cadastro de produto
-                    [L1] - Lista fornecedores
-                    [L2] - Lista clientes
-                    [L3] - Lista produtos
-                    [PN] - Produto por nome
-                    [10] - Sai do Programa
-                    Opcao:\s""");
+            System.out.print("\n" +
+                    "[1] - Cadastra fornecedor\n" +
+                    "[2] - Cadastro de cliente\n" +
+                    "[3] - Cadastro de produto\n" +
+                    "[4] - Realizar pedido\n" +
+                    "[L1] - Lista fornecedores\n" +
+                    "[L2] - Lista clientes\n" +
+                    "[10] - Sai do Programa\n" +
+                    "Opcao:\n");
 
             String escolha = scanner.nextLine().replaceAll("\\[", "").replaceAll("]", "");
             switch (escolha) {
-                case "s" -> exit = Boolean.TRUE;
-                case "1" -> {
+                case "s" : {
+                    exit = Boolean.TRUE;
+                    break;
+                }
+                case "1" : {
                     //Talvez criar uma função no service que faz a adição
                     bancoDeDadosDeFornecedores.add(fornecedorService.criaFornecedor(scanner));
+                    break;
                 }
-                case "2" -> {
+                case "2" : {
                     bancoDeDadosDeClientes.add(clienteService.escolherTipoDeCliente(scanner));
+                    break;
                 }
-                case "3" -> {
+                case "3" : {
                     bancoDeDadosDeProdutos.add(produtoService.cadastrarProduto(scanner, bancoDeDadosDeFornecedores));
+                    break;
                 }
-                case "L1" -> {
+                case "4" : {
+                    pedido = pedidoService.criaPedido(scanner, bancoDeDadosDeProdutos);
+                    break;
+                }
+                case "L1" : {
                     fornecedorService.listaFornecedores(scanner, bancoDeDadosDeFornecedores);
+                    break;
                 }
-                case "L2" -> {
+                case "L2" : {
                     clienteService.listarClientes(scanner, bancoDeDadosDeClientes);
+                    break;
                 }
-                case "L3" -> {
-                    produtoService.listarProdutos(scanner, bancoDeDadosDeProdutos);
+                case "f" : {
+                    System.out.println("Fornecedor");
+                    break;
                 }
-                case "PN" -> {
-                    produtoService.buscarProdutoPorNome(scanner, bancoDeDadosDeProdutos);
-                }
-                case "f" -> System.out.println("Fornecedor");
-                default -> {
+                default : {
                     System.out.println("Escolha invalida\n" +
                             "Aperte qualquer tecla...");
                     scanner.nextLine();

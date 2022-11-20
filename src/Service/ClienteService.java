@@ -31,10 +31,10 @@ public class ClienteService {
   }
 
   public Cliente escolherTipoDeCliente(Scanner scanner){
-    System.out.println("""
-        [1] - Pessoa Física
-        [2]  - Juridica
-        """);
+    System.out.println(
+        "[1] - Pessoa Física\n" +
+        "[2]  - Juridica\n"
+        );
     String escolha = scanner.nextLine().replaceAll("\\[", "").replaceAll("]", "");  
     if(escolha.equals("1")){
       return this.criaClientePessoaFisica(scanner);
