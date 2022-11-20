@@ -16,8 +16,9 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido( Cliente cliente, ArrayList<ProdutoQuantidade> produtos) {
+    public Pedido( Cliente cliente, ArrayList<ProdutoQuantidade> produtos, Date data) {
         this.cliente = cliente;
+        this.data = data;
         this.produtos = produtos;
         double somador = 0;
         for(ProdutoQuantidade produto: produtos) {

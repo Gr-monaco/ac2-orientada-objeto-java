@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 import Classes.*;
@@ -29,9 +30,13 @@ public class App {
         ArrayList<ProdutoQuantidade> produtosPedido2 = new ArrayList<>();
         produtosPedido2.add(new ProdutoQuantidade("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1), 2));
 
+        Calendar cal1 = Calendar.getInstance();
+        cal1.set(2022, Calendar.DECEMBER,10);
+        Calendar cal2 = Calendar.getInstance();
+        cal2.set(2022, Calendar.DECEMBER,15);
 
-        bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(0), produtosPedido1));
-        bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(1), produtosPedido2));
+        bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(0), produtosPedido1, cal1.getTime()));
+        bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(1), produtosPedido2, cal2.getTime()));
 
 
         boolean exit = Boolean.FALSE;
@@ -60,6 +65,7 @@ public class App {
                     "[L2] - Lista clientes\n" +
                     "[L3] - Lista produtos\n" +
                     "[L4] - Lista pedidos\n" +
+                    "[P1] - Busca entre datas\n" +
                     "[10] - Sai do Programa\n" +
                     "Opcao:\n");
 
@@ -108,6 +114,9 @@ public class App {
                 }
                 case "L4" : {
                     pedidoService.listarPedidos(scanner, bancoDeDadosDePedidos);
+                }
+                case "P1" : {
+                    pedidoService.pedidosEntreDatas(scanner, bancoDeDadosDePedidos);
                 }
                 case "f" : {
                     System.out.println("Fornecedor");
