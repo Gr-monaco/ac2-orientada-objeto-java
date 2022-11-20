@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Pedido {
-    private String cpf;
     private Cliente cliente;
     private Date data;
     private Double valorTotal;
@@ -17,8 +16,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(String cpf, Cliente cliente, ArrayList<ProdutoQuantidade> produtos) {
-        this.cpf = cpf;
+    public Pedido( Cliente cliente, ArrayList<ProdutoQuantidade> produtos) {
         this.cliente = cliente;
         this.produtos = produtos;
         double somador = 0;
@@ -29,13 +27,6 @@ public class Pedido {
         this.baixaPagamento = false;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
     public Date getData() {
         return data;
     }

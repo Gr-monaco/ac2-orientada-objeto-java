@@ -66,6 +66,26 @@ public class PedidoService {
     return bancoDeDadosDePedidos.get(baixa);
   }
 
+  public Pedido buscarPedido(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
+    System.out.println("Insira o ID do pedido que deseja buscar");
+    int opcao = Integer.parseInt(scanner.nextLine());
+
+    try {
+      Pedido pedido = bancoDeDadosDePedidos.get(opcao);
+      System.out.println("Cliente: " +pedido.getCliente() + " Valor total: "+ pedido.getValorTotal());
+      for (ProdutoQuantidade produtos: pedido.getProdutos()) {
+        System.out.println("PRODUTO: " + produtos.getNome() + " QUANTIDADE: "+produtos.getQuantidade());
+      }
+      System.out.println("DATA: "+ pedido.getData());
+      System.out.println("STATUS: "+ (pedido.getBaixaPagamento() ? "PAGO" : "ABERTO"));
+    }catch (Exception exception){
+      System.out.println("Sem pedido com este ID");
+    }
+    System.out.println("Digite qualquer tecla para continuar...");
+    scanner.nextLine();
+    return new Pedido();
+  }
+
   public void listarPedidos(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
     for(int i = 0; i < bancoDeDadosDePedidos.size(); i++){
       System.out.println("[ ("+ i +") " + bancoDeDadosDePedidos.get(i).toString()+" ]");

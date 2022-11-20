@@ -9,16 +9,30 @@ import Service.ProdutoService;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
         ArrayList<Fornecedor> bancoDeDadosDeFornecedores = new ArrayList<>();
         bancoDeDadosDeFornecedores.add(new Fornecedor("Pilhas Azul", "28.530.660/0001-01"));
         bancoDeDadosDeFornecedores.add(new Fornecedor("Engrenagens engenharia", "19.171.253/0001-56" ));
-        ArrayList<Pedido> bancoDeDadosDePedidos = new ArrayList<>();
+
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
         bancoDeDadosDeClientes.add(new PessoaFisica("Arthur","arthur@gmail.com","113.985.990-00" ));
         bancoDeDadosDeClientes.add(new PessoaJuridica("Auto Peças", "pecasAuto@gmail.com", "66.018.594/0001-76"));
+
         ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
         bancoDeDadosDeProdutos.add(new Produto("Pilha Power",50f, "Pilhas super", bancoDeDadosDeFornecedores.get(0)));
         bancoDeDadosDeProdutos.add(new Produto("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1)));
+
+        ArrayList<Pedido> bancoDeDadosDePedidos = new ArrayList<>();
+        ArrayList<ProdutoQuantidade> produtosPedido1 = new ArrayList<>();
+        produtosPedido1.add(new ProdutoQuantidade("Pilha Power",50f, "Pilhas super", bancoDeDadosDeFornecedores.get(0), 5));
+        produtosPedido1.add(new ProdutoQuantidade("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1), 5));
+        ArrayList<ProdutoQuantidade> produtosPedido2 = new ArrayList<>();
+        produtosPedido2.add(new ProdutoQuantidade("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1), 2));
+
+
+        bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(0), produtosPedido1));
+        bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(1), produtosPedido2));
+
 
         boolean exit = Boolean.FALSE;
         FornecedorService fornecedorService = new FornecedorService();
@@ -41,6 +55,7 @@ public class App {
                     "[3] - Cadastro de produto\n" +
                     "[4] - Realizar pedido\n" +
                     "[5] - Baixa de pedido\n" +
+                    "[6] - Busca pedido\n" +
                     "[L1] - Lista fornecedores\n" +
                     "[L2] - Lista clientes\n" +
                     "[L3] - Lista produtos\n" +
@@ -73,6 +88,10 @@ public class App {
                 }
                 case "5" : {
                     pedidoService.baixarPedido(scanner, bancoDeDadosDePedidos);
+                    break;
+                }
+                case "6" : {
+                    pedidoService.buscarPedido(scanner, bancoDeDadosDePedidos);
                     break;
                 }
                 case "L1" : {
