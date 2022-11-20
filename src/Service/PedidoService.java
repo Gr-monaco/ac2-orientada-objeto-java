@@ -65,4 +65,12 @@ public class PedidoService {
     scanner.nextLine();
     return bancoDeDadosDePedidos.get(baixa);
   }
+
+  public void listarPedidos(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
+    for(int i = 0; i < bancoDeDadosDePedidos.size(); i++){
+      System.out.println("[ ("+ i +") " + bancoDeDadosDePedidos.get(i).toString()+" ]");
+    }
+    System.out.println("Digite qualquer tecla para continuar");
+    scanner.nextLine();
+  }
 }
