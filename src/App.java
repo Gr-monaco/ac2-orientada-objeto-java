@@ -66,6 +66,7 @@ public class App {
                     "[L3] - Lista produtos\n" +
                     "[L4] - Lista pedidos\n" +
                     "[P1] - Busca entre datas\n" +
+                    "[P2] - Total de pedidos abertos\n"+
                     "[10] - Sai do Programa\n" +
                     "Opcao:\n");
 
@@ -117,6 +118,9 @@ public class App {
                 }
                 case "P1" : {
                     pedidoService.pedidosEntreDatas(scanner, bancoDeDadosDePedidos);
+                }
+                case "P2" : {
+                    pedidoService.calcularValorTotalDePedidosAbertos(scanner, bancoDeDadosDePedidos);
                 }
                 case "f" : {
                     System.out.println("Fornecedor");
