@@ -136,6 +136,7 @@ public class PedidoService {
     scanner.nextLine();
 
   }
+  
   public void buscaPagos(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos) {
     int verificador = 0;
     for (int i = 0; i < bancoDeDadosDePedidos.size(); i++){
@@ -150,7 +151,16 @@ public class PedidoService {
       }
     }else
       System.out.println("Não foi possivel encontrar nenhum pedido pago.");
-    System.out.println("Aperte qualquer tecla para continuar...");
+      System.out.println("Aperte qualquer tecla para continuar...");
+      scanner.nextLine();
+  }
+
+  public void calcularValorTotalDePedidosAbertos(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
+    double soma = bancoDeDadosDePedidos.stream().filter(pedido -> !pedido.getBaixaPagamento())
+                                                .map(Pedido::getValorTotal)
+                                                .reduce(0.0d, Double::sum);
+    System.out.format("Valor total dos pedidos abertos: RS:%.2f\n", soma);
+    System.out.println("Aperte uma tecla para continuar...");
     scanner.nextLine();
   }
 }
