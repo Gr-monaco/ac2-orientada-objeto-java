@@ -105,4 +105,35 @@ public class PedidoService {
     System.out.println("Digite qualquer tecla para continuar");
     scanner.nextLine();
   }
+
+  public void pedidosEntreDatas(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
+    System.out.println("Escolha a data inicial: ");
+    System.out.println("DIA: ");
+    int diaInicial = Integer.parseInt(scanner.nextLine());
+    System.out.println("MES: ");
+    int mesInicial = Integer.parseInt(scanner.nextLine());
+    System.out.println("ANO: ");
+    int anoInicial = Integer.parseInt(scanner.nextLine());
+
+    System.out.println("Escolha a data final: ");
+    int diaFinal = Integer.parseInt(scanner.nextLine());
+    System.out.println("MES: ");
+    int mesFinal = Integer.parseInt(scanner.nextLine());
+    System.out.println("ANO: ");
+    int anoFinal = Integer.parseInt(scanner.nextLine());
+
+    Calendar cal1 = Calendar.getInstance();
+    Calendar cal2 = Calendar.getInstance();
+    cal1.set(anoInicial, mesInicial-1, diaInicial);
+    cal2.set(anoFinal, mesFinal-1, diaFinal);
+
+    for(int i = 0; i < bancoDeDadosDePedidos.size(); i++){
+      if(bancoDeDadosDePedidos.get(i).getData().after(cal1.getTime()) && bancoDeDadosDePedidos.get(i).getData().before(cal2.getTime())){
+        System.out.println("[ ("+ i +") " + bancoDeDadosDePedidos.get(i).toString()+" ]");
+      }
+    }
+    System.out.println("Aperte qualquer tecla para continuar...");
+    scanner.nextLine();
+
+  }
 }

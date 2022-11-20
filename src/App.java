@@ -33,7 +33,7 @@ public class App {
         Calendar cal1 = Calendar.getInstance();
         cal1.set(2022, Calendar.DECEMBER,10);
         Calendar cal2 = Calendar.getInstance();
-        cal1.set(2022, Calendar.DECEMBER,15);
+        cal2.set(2022, Calendar.DECEMBER,15);
 
         bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(0), produtosPedido1, cal1.getTime()));
         bancoDeDadosDePedidos.add(new Pedido(bancoDeDadosDeClientes.get(1), produtosPedido2, cal2.getTime()));
@@ -65,6 +65,7 @@ public class App {
                     "[L2] - Lista clientes\n" +
                     "[L3] - Lista produtos\n" +
                     "[L4] - Lista pedidos\n" +
+                    "[P1] - Busca entre datas\n" +
                     "[10] - Sai do Programa\n" +
                     "Opcao:\n");
 
@@ -113,6 +114,9 @@ public class App {
                 }
                 case "L4" : {
                     pedidoService.listarPedidos(scanner, bancoDeDadosDePedidos);
+                }
+                case "P1" : {
+                    pedidoService.pedidosEntreDatas(scanner, bancoDeDadosDePedidos);
                 }
                 case "f" : {
                     System.out.println("Fornecedor");
