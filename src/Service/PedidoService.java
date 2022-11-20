@@ -7,11 +7,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PedidoService {
-  public Pedido criaPedido(Scanner scanner, ArrayList<Produto> produtos){
-    System.out.println("Insira um CPF do cliente:");
-    String cpf = scanner.nextLine();
-    System.out.println("Insira um nome do cliente:");
-    String nome = scanner.nextLine();
+  public Pedido criaPedido(Scanner scanner, ArrayList<Produto> produtos, ArrayList<Cliente> clientes){
+    Pedido pedido = new Pedido();
+
+    System.out.println("Escolha um cliente: ");
+    int contador = 1;
+    for(Cliente cliente : clientes){
+      System.out.println("[("+contador+" "+ cliente.toString()+" ]");
+      contador++;
+    }
+
+    int opcao = Integer.parseInt(scanner.nextLine());
+    Cliente clienteEscolhido = clientes.get(opcao);
+    pedido.setCliente(clienteEscolhido);
+
 
     ArrayList<ProdutoQuantidade> produtosDoPedido = new ArrayList<>();
 
@@ -40,14 +49,14 @@ public class PedidoService {
       System.out.println("2 - nao");
       continuar = Integer.parseInt(scanner.nextLine());
     }
-
-    return new Pedido(cpf, nome, produtosDoPedido);
+    pedido.setProdutos(produtosDoPedido);
+    return pedido;
   }
   public Pedido baixarPedido(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos) {
     System.out.println("Insira o pedido que deseja realizar a baixa: ");
     for(int i = 0; i < bancoDeDadosDePedidos.size(); i++) {
       if (!bancoDeDadosDePedidos.get(i).getBaixaPagamento()) {
-        System.out.println("[ID ("+i+") -  "+ bancoDeDadosDePedidos.get(i).getNomeDoCliente()+" - R$"+ bancoDeDadosDePedidos.get(i).getValorTotal()+"]");
+        System.out.println("[ID ("+i+") -  "+ bancoDeDadosDePedidos.get(i).getCliente().getNome()+" - R$"+ bancoDeDadosDePedidos.get(i).getValorTotal()+"]");
       }
     }
     int baixa = Integer.parseInt(scanner.nextLine());
@@ -59,6 +68,15 @@ public class PedidoService {
 
   public Pedido buscarPedido(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
     System.out.println("Insira o ID do pedido que deseja buscar");
+    scanner.nextLine();
+    return new Pedido();
+  }
+
+  public void listarPedidos(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
+    for(int i = 0; i < bancoDeDadosDePedidos.size(); i++){
+      System.out.println("[ ("+ i +") " + bancoDeDadosDePedidos.get(i).toString()+" ]");
+    }
+    System.out.println("Digite qualquer tecla para continuar");
     scanner.nextLine();
   }
 }

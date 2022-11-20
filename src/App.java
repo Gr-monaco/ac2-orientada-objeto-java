@@ -1,10 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Classes.Cliente;
-import Classes.Fornecedor;
-import Classes.Pedido;
-import Classes.Produto;
+import Classes.*;
 import Service.ClienteService;
 import Service.FornecedorService;
 import Service.PedidoService;
@@ -17,6 +14,8 @@ public class App {
         bancoDeDadosDeFornecedores.add(new Fornecedor("Engrenagens engenharia", "19.171.253/0001-56" ));
         ArrayList<Pedido> bancoDeDadosDePedidos = new ArrayList<>();
         ArrayList<Cliente> bancoDeDadosDeClientes = new ArrayList<>();
+        bancoDeDadosDeClientes.add(new PessoaFisica("Arthur","arthur@gmail.com","113.985.990-00" ));
+        bancoDeDadosDeClientes.add(new PessoaJuridica("Auto Peças", "pecasAuto@gmail.com", "66.018.594/0001-76"));
         ArrayList<Produto> bancoDeDadosDeProdutos = new ArrayList<>();
         bancoDeDadosDeProdutos.add(new Produto("Pilha Power",50f, "Pilhas super", bancoDeDadosDeFornecedores.get(0)));
         bancoDeDadosDeProdutos.add(new Produto("Engrenagem Grande", 25f, "Engrenagem de 25 partes", bancoDeDadosDeFornecedores.get(1)));
@@ -45,6 +44,7 @@ public class App {
                     "[L1] - Lista fornecedores\n" +
                     "[L2] - Lista clientes\n" +
                     "[L3] - Lista produtos\n" +
+                    "[L4] - Lista pedidos\n" +
                     "[10] - Sai do Programa\n" +
                     "Opcao:\n");
 
@@ -68,7 +68,7 @@ public class App {
                     break;
                 }
                 case "4" : {
-                    bancoDeDadosDePedidos.add(pedidoService.criaPedido(scanner, bancoDeDadosDeProdutos));
+                    bancoDeDadosDePedidos.add(pedidoService.criaPedido(scanner, bancoDeDadosDeProdutos, bancoDeDadosDeClientes));
                     break;
                 }
                 case "5" : {
@@ -86,6 +86,9 @@ public class App {
                 case "L3" : {
                     produtoService.listarProdutos(scanner, bancoDeDadosDeProdutos);
                     break;
+                }
+                case "L4" : {
+                    pedidoService.listarPedidos(scanner, bancoDeDadosDePedidos);
                 }
                 case "f" : {
                     System.out.println("Fornecedor");
