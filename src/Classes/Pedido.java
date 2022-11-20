@@ -12,6 +12,8 @@ public class Pedido {
 
     private List<ProdutoQuantidade> produtos;
 
+    private Boolean baixaPagamento;
+
     public Pedido() {
     }
 
@@ -25,6 +27,7 @@ public class Pedido {
             somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
         }
         this.valorTotal = somador;
+        this.baixaPagamento = false;
     }
 
     public String getCpf() {
@@ -61,6 +64,12 @@ public class Pedido {
 
     public void addProduto(ProdutoQuantidade novoProduto) {
         this.produtos.add(novoProduto);
+    }
+
+    public Boolean getBaixaPagamento() { return baixaPagamento; }
+
+    public void setBaixaPagamento(Boolean baixaPagamento) {
+        this.baixaPagamento = baixaPagamento;
     }
 
     @Override

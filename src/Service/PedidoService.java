@@ -2,6 +2,7 @@ package Service;
 
 import Classes.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -41,5 +42,17 @@ public class PedidoService {
     }
 
     return new Pedido(cpf, nome, produtosDoPedido);
+  }
+  public Pedido baixarPedido(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos) {
+    System.out.println("Insira o pedido que deseja realizar a baixa: ");
+    for(int i = 0; i < bancoDeDadosDePedidos.size(); i++) {
+      if (!bancoDeDadosDePedidos.get(i).getBaixaPagamento()) {
+        System.out.println("[ID ("+i+") -  "+ bancoDeDadosDePedidos.get(i).getNomeDoCliente()+" - R$"+ bancoDeDadosDePedidos.get(i).getValorTotal()+"]");
+      }
+    }
+    int baixa = Integer.parseInt(scanner.nextLine());
+    bancoDeDadosDePedidos.get(baixa).setBaixaPagamento(true);
+    System.out.println("Baixa do pedido realizaada com sucesso");
+    return bancoDeDadosDePedidos.get(baixa);
   }
 }

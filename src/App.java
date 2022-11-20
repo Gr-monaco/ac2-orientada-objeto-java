@@ -41,6 +41,7 @@ public class App {
                     "[2] - Cadastro de cliente\n" +
                     "[3] - Cadastro de produto\n" +
                     "[4] - Realizar pedido\n" +
+                    "[5] - Baixa de pedido\n" +
                     "[L1] - Lista fornecedores\n" +
                     "[L2] - Lista clientes\n" +
                     "[L3] - Lista produtos\n" +
@@ -68,6 +69,10 @@ public class App {
                 }
                 case "4" : {
                     bancoDeDadosDePedidos.add(pedidoService.criaPedido(scanner, bancoDeDadosDeProdutos));
+                    break;
+                }
+                case "5" : {
+                    pedidoService.baixarPedido(scanner, bancoDeDadosDePedidos);
                     break;
                 }
                 case "L1" : {
