@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Pedido {
     private String cpf;
-    private String nomeDoCliente;
+    private Cliente cliente;
     private Date data;
     private Double valorTotal;
 
@@ -17,9 +17,9 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(String cpf, String nomeDoCliente, ArrayList<ProdutoQuantidade> produtos) {
+    public Pedido(String cpf, Cliente cliente, ArrayList<ProdutoQuantidade> produtos) {
         this.cpf = cpf;
-        this.nomeDoCliente = nomeDoCliente;
+        this.cliente = cliente;
         this.data = new Date();
         this.produtos = produtos;
         double somador = 0;
@@ -37,15 +37,6 @@ public class Pedido {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-    public String getNomeDoCliente() {
-        return nomeDoCliente;
-    }
-
-    public void setNomeDoCliente(String nomeDoCliente) {
-        this.nomeDoCliente = nomeDoCliente;
-    }
-
     public Date getData() {
         return data;
     }
@@ -72,11 +63,19 @@ public class Pedido {
         this.baixaPagamento = baixaPagamento;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @Override
     public String toString() {
         return "Pedido{" +
                 "cpf='" + cpf + '\'' +
-                ", nomeDoCliente='" + nomeDoCliente + '\'' +
+                ", nomeDoCliente='" + cliente.getNome()  + '\'' +
                 ", data=" + data +
                 ", valorTotal=" + valorTotal +
                 '}';
