@@ -53,6 +53,7 @@ public class PedidoService {
     int baixa = Integer.parseInt(scanner.nextLine());
     bancoDeDadosDePedidos.get(baixa).setBaixaPagamento(true);
     System.out.println("Baixa do pedido realizaada com sucesso");
+    scanner.nextLine();
     return bancoDeDadosDePedidos.get(baixa);
   }
 }
