@@ -125,10 +125,6 @@ public class App {
                     pedidoService.pedidosEntreDatas(scanner, bancoDeDadosDePedidos);
                     break;
                 }
-                case "f" : {
-                    System.out.println("Fornecedor");
-                    break;
-                }
                 default : {
                     System.out.println("Escolha invalida\n" +
                             "Aperte qualquer tecla...");
