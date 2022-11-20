@@ -65,6 +65,7 @@ public class App {
                     "[L2] - Lista clientes\n" +
                     "[L3] - Lista produtos\n" +
                     "[L4] - Lista pedidos\n" +
+                    "[L5] - Lista pagos\n" +
                     "[P1] - Busca entre datas\n" +
                     "[P2] - Total de pedidos abertos\n"+
                     "[10] - Sai do Programa\n" +
@@ -115,21 +116,27 @@ public class App {
                 }
                 case "L4" : {
                     pedidoService.listarPedidos(scanner, bancoDeDadosDePedidos);
+                    break;
+                }
+                case "L5" : {
+                    pedidoService.buscaPagos(scanner, bancoDeDadosDePedidos);
+                    break;
                 }
                 case "P1" : {
                     pedidoService.pedidosEntreDatas(scanner, bancoDeDadosDePedidos);
                 }
                 case "P2" : {
                     pedidoService.calcularValorTotalDePedidosAbertos(scanner, bancoDeDadosDePedidos);
-                }
-                case "f" : {
-                    System.out.println("Fornecedor");
                     break;
                 }
                 default : {
                     System.out.println("Escolha invalida\n" +
                             "Aperte qualquer tecla...");
                     scanner.nextLine();
+                }
+                case "10" : {
+                    System.out.println("Programa finalizado.");
+                    System.exit(0);
                 }
             }
         }

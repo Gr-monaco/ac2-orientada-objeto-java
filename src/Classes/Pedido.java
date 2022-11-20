@@ -16,12 +16,12 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido( Cliente cliente, ArrayList<ProdutoQuantidade> produtos, Date data) {
+    public Pedido(Cliente cliente, ArrayList<ProdutoQuantidade> produtos, Date data) {
         this.cliente = cliente;
         this.data = data;
         this.produtos = produtos;
         double somador = 0;
-        for(ProdutoQuantidade produto: produtos) {
+        for (ProdutoQuantidade produto : produtos) {
             somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
         }
         this.valorTotal = somador;
@@ -48,7 +48,9 @@ public class Pedido {
         this.produtos.add(novoProduto);
     }
 
-    public Boolean getBaixaPagamento() { return baixaPagamento; }
+    public Boolean getBaixaPagamento() {
+        return baixaPagamento;
+    }
 
     public void setBaixaPagamento(Boolean baixaPagamento) {
         this.baixaPagamento = baixaPagamento;
@@ -68,7 +70,7 @@ public class Pedido {
 
     public void setProdutos(List<ProdutoQuantidade> produtos) {
         double somador = 0;
-        for(ProdutoQuantidade produto: produtos) {
+        for (ProdutoQuantidade produto : produtos) {
             somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
         }
         this.valorTotal = somador;
@@ -78,7 +80,7 @@ public class Pedido {
     @Override
     public String toString() {
         return "Pedido{" +
-                ", nomeDoCliente='" + cliente.getNome()  + '\'' +
+                ", nomeDoCliente='" + cliente.getNome() + '\'' +
                 ", data=" + data +
                 ", valorTotal=" + valorTotal +
                 '}';

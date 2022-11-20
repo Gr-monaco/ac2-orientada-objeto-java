@@ -73,7 +73,7 @@ public class PedidoService {
     }
     int baixa = Integer.parseInt(scanner.nextLine());
     bancoDeDadosDePedidos.get(baixa).setBaixaPagamento(true);
-    System.out.println("Baixa do pedido realizaada com sucesso");
+    System.out.println("Baixa do pedido realizaada com sucesso, digite qualquer tecla para continuar...");
     scanner.nextLine();
     return bancoDeDadosDePedidos.get(baixa);
   }
@@ -135,6 +135,24 @@ public class PedidoService {
     System.out.println("Aperte qualquer tecla para continuar...");
     scanner.nextLine();
 
+  }
+  
+  public void buscaPagos(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos) {
+    int verificador = 0;
+    for (int i = 0; i < bancoDeDadosDePedidos.size(); i++){
+      if (bancoDeDadosDePedidos.get(i).getBaixaPagamento())
+        verificador++;
+    }
+    if(verificador>0) {
+      System.out.println("Pedidos pagos:");
+      for (int i = 0; i < bancoDeDadosDePedidos.size(); i++) {
+        if (bancoDeDadosDePedidos.get(i).getBaixaPagamento())
+          System.out.println("Pedido [" + i + "] - " + bancoDeDadosDePedidos.get(i).getCliente().getNome() + " - R$" + bancoDeDadosDePedidos.get(i).getValorTotal());
+      }
+    }else
+      System.out.println("Não foi possivel encontrar nenhum pedido pago.");
+      System.out.println("Aperte qualquer tecla para continuar...");
+      scanner.nextLine();
   }
 
   public void calcularValorTotalDePedidosAbertos(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){

@@ -5,6 +5,7 @@ public class Produto {
     private String nome;
     private Float valorUnitario;
     private String descricao;
+    private int quantidade;
 
     private Fornecedor fornecedor;
 
@@ -49,6 +50,10 @@ public class Produto {
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
+
+    public int getQuantidade() {return quantidade;}
+
+    public void setQuantidade(int quantidade) {this.quantidade = quantidade;}
 
     @Override
     public String toString() {
