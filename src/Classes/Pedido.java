@@ -5,43 +5,27 @@ import java.util.Date;
 import java.util.List;
 
 public class Pedido {
-    private String cpf;
-    private String nomeDoCliente;
+    private Cliente cliente;
     private Date data;
     private Double valorTotal;
 
-    private List<Produto> produtos;
+    private List<ProdutoQuantidade> produtos;
+
+    private Boolean baixaPagamento;
 
     public Pedido() {
     }
 
-    public Pedido(String cpf, String nomeDoCliente, ArrayList<Produto> produtos) {
-        this.cpf = cpf;
-        this.nomeDoCliente = nomeDoCliente;
-        this.data = new Date();
+    public Pedido(Cliente cliente, ArrayList<ProdutoQuantidade> produtos, Date data) {
+        this.cliente = cliente;
+        this.data = data;
         this.produtos = produtos;
         double somador = 0;
-        for (Produto produto : produtos) {
+        for (ProdutoQuantidade produto : produtos) {
             somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
         }
         this.valorTotal = somador;
-        this.pago = false;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getNomeDoCliente() {
-        return nomeDoCliente;
-    }
-
-    public void setNomeDoCliente(String nomeDoCliente) {
-        this.nomeDoCliente = nomeDoCliente;
+        this.baixaPagamento = false;
     }
 
     public Date getData() {
@@ -60,21 +44,43 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
 
-    public void addProduto(Produto novoProduto) {
+    public void addProduto(ProdutoQuantidade novoProduto) {
         this.produtos.add(novoProduto);
     }
 
-    public Pedido(boolean pago) {
-        this.pago = pago;
+    public Boolean getBaixaPagamento() {
+        return baixaPagamento;
     }
 
-    private boolean pago;
+    public void setBaixaPagamento(Boolean baixaPagamento) {
+        this.baixaPagamento = baixaPagamento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ProdutoQuantidade> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<ProdutoQuantidade> produtos) {
+        double somador = 0;
+        for (ProdutoQuantidade produto : produtos) {
+            somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
+        }
+        this.valorTotal = somador;
+        this.produtos = produtos;
+    }
 
     @Override
     public String toString() {
         return "Pedido{" +
-                "cpf='" + cpf + '\'' +
-                ", nomeDoCliente='" + nomeDoCliente + '\'' +
+                ", nomeDoCliente='" + cliente.getNome() + '\'' +
                 ", data=" + data +
                 ", valorTotal=" + valorTotal +
                 '}';

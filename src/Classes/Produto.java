@@ -4,7 +4,6 @@ public class Produto {
 
     private String nome;
     private Float valorUnitario;
-    private int quantidade;
     private String descricao;
     private int quantidade;
 
@@ -13,10 +12,9 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, Float valorUnitario, int quantidade, String descricao, Fornecedor fornecedor) {
+    public Produto(String nome, Float valorUnitario, String descricao, Fornecedor fornecedor) {
         this.nome = nome;
         this.valorUnitario = valorUnitario;
-        this.quantidade = quantidade;
         this.descricao = descricao;
         this.fornecedor = fornecedor;
     }
@@ -35,14 +33,6 @@ public class Produto {
 
     public void setValorUnitario(Float valorUnitario) {
         this.valorUnitario = valorUnitario;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
     }
 
     public String getDescricao() {
