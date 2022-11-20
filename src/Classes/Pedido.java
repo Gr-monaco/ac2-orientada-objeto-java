@@ -20,7 +20,6 @@ public class Pedido {
     public Pedido(String cpf, Cliente cliente, ArrayList<ProdutoQuantidade> produtos) {
         this.cpf = cpf;
         this.cliente = cliente;
-        this.data = new Date();
         this.produtos = produtos;
         double somador = 0;
         for(ProdutoQuantidade produto: produtos) {
@@ -71,10 +70,22 @@ public class Pedido {
         this.cliente = cliente;
     }
 
+    public List<ProdutoQuantidade> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<ProdutoQuantidade> produtos) {
+        double somador = 0;
+        for(ProdutoQuantidade produto: produtos) {
+            somador = somador + (produto.getQuantidade() * produto.getValorUnitario());
+        }
+        this.valorTotal = somador;
+        this.produtos = produtos;
+    }
+
     @Override
     public String toString() {
         return "Pedido{" +
-                "cpf='" + cpf + '\'' +
                 ", nomeDoCliente='" + cliente.getNome()  + '\'' +
                 ", data=" + data +
                 ", valorTotal=" + valorTotal +
