@@ -56,4 +56,9 @@ public class PedidoService {
     scanner.nextLine();
     return bancoDeDadosDePedidos.get(baixa);
   }
+
+  public Pedido buscarPedido(Scanner scanner, ArrayList<Pedido> bancoDeDadosDePedidos){
+    System.out.println("Insira o ID do pedido que deseja buscar");
+    scanner.nextLine();
+  }
 }
