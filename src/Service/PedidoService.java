@@ -4,6 +4,7 @@ import Classes.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class PedidoService {
@@ -18,9 +19,20 @@ public class PedidoService {
     }
 
     int opcao = Integer.parseInt(scanner.nextLine());
-    Cliente clienteEscolhido = clientes.get(opcao);
+    Cliente clienteEscolhido = clientes.get(opcao-1);
     pedido.setCliente(clienteEscolhido);
 
+    System.out.println("Escolha um ano: ");
+    int ano = Integer.parseInt(scanner.nextLine());
+    System.out.println("Digite um mes: ");
+    int mes = Integer.parseInt(scanner.nextLine());
+    System.out.println("Digite um dia");
+    int dia = Integer.parseInt(scanner.nextLine());
+
+    Calendar calendar = Calendar.getInstance();
+    // tem que ser mes-1 por causa de como é feito a estrutura
+    calendar.set(ano, mes-1, dia);
+    pedido.setData(calendar.getTime());
 
     ArrayList<ProdutoQuantidade> produtosDoPedido = new ArrayList<>();
 
